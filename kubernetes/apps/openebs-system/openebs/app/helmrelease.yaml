@@ -30,6 +30,9 @@ spec:
       replicated:
         mayastor:
           enabled: true
+    mayastor:
+      io_engine:
+        envcontext: "iova-mode=pa"
     openebs-crds:
       csi:
         volumeSnapshots:

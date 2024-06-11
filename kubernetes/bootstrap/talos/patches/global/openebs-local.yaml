@@ -8,3 +8,10 @@ machine:
           - bind
           - rshared
           - rw
+      - destination: /var/local
+        type: bind
+        source: /var/local
+        options:
+          - bind
+          - rshared
+          - rw

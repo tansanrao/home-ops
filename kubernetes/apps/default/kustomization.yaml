@@ -7,4 +7,5 @@ resources:
   - ./namespace.yaml
   # Flux-Kustomizations
   - ./glauth/ks.yaml
+  - ./smtp-relay/ks.yaml
   - ./authelia/ks.yaml

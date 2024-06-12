@@ -12,6 +12,8 @@ resources:
   - ./prometheus-community.yaml
   - ./spegel.yaml
   - ./stakater.yaml
+  - ./cloudnative-pg.yaml
+  - ./stevehipwell.yaml
   - ./external-dns.yaml
   - ./ingress-nginx.yaml
   - ./k8s-gateway.yaml

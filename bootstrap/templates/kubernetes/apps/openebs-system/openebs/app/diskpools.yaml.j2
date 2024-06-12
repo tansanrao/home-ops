@@ -1,0 +1,29 @@
+---
+apiVersion: "openebs.io/v1beta2"
+kind: DiskPool
+metadata:
+  name: pool-on-node-0
+  namespace: openebs-system
+spec:
+  node: k8s0
+  disks: ["/dev/sda"]
+
+---
+apiVersion: "openebs.io/v1beta2"
+kind: DiskPool
+metadata:
+  name: pool-on-node-1
+  namespace: openebs-system
+spec:
+  node: k8s1
+  disks: ["/dev/sdb"]
+
+---
+apiVersion: "openebs.io/v1beta2"
+kind: DiskPool
+metadata:
+  name: pool-on-node-2
+  namespace: openebs-system
+spec:
+  node: k8s2
+  disks: ["/dev/nvme0n1"]

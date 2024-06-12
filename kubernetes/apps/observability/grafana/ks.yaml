@@ -3,14 +3,16 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: &app kube-prometheus-stack
+  name: &app grafana
   namespace: flux-system
 spec:
   targetNamespace: observability
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  path: ./kubernetes/apps/observability/kube-prometheus-stack/app
+  dependsOn:
+    - name: cloudnative-pg-cluster
+  path: ./kubernetes/apps/observability/grafana/app
   prune: true
   sourceRef:
     kind: GitRepository
@@ -18,8 +20,4 @@ spec:
   wait: false
   interval: 30m
   retryInterval: 1m
-  timeout: 15m
-  postBuild:
-    substitute:
-      # renovate: datasource=docker depName=quay.io/thanos/thanos
-      THANOS_VERSION: v0.35.1
+  timeout: 5m

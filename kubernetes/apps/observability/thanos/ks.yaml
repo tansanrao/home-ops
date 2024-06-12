@@ -6,7 +6,6 @@ metadata:
   name: &app thanos
   namespace: flux-system
 spec:
-  suspend: true
   targetNamespace: observability
   commonMetadata:
     labels:

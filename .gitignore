@@ -26,3 +26,5 @@ wiki
 /config.yaml
 #stop pushing bootstrap dir
 bootstrap/
+# ignore authelia dir
+.authelia/

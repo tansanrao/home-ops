@@ -6,6 +6,7 @@ metadata:
   name: &app kube-prometheus-stack
   namespace: flux-system
 spec:
+  suspend: true
   targetNamespace: observability
   commonMetadata:
     labels:

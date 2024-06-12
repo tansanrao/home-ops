@@ -83,6 +83,7 @@ patches:
   - "@./patches/global/kubelet.yaml"
   - "@./patches/global/node-labels.yaml"
   - "@./patches/global/openebs-local.yaml"
+  - "@./patches/global/openebs-mayastor.yaml"
   - "@./patches/global/sysctl.yaml"
 
 # Controller patches

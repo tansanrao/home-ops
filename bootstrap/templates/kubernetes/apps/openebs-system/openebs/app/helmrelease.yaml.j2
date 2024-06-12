@@ -31,6 +31,10 @@ spec:
         mayastor:
           enabled: true
     mayastor:
+      csi:
+        node:
+          initContainers:
+            enabled: false
       io_engine:
         envcontext: "iova-mode=pa"
     openebs-crds:

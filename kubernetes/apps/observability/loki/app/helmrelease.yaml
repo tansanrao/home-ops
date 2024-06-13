@@ -56,6 +56,10 @@ spec:
   values:
     deploymentMode: SimpleScalable
     loki:
+      chunk_cache:
+        enabled: false
+      results_cache:
+        enabled: false
       podAnnotations:
         configmap.reloader.stakater.com/reload: *cephBucket
         secret.reloader.stakater.com/reload: *cephBucket

@@ -45,7 +45,7 @@ spec:
         hosts: ["alertmanager.tansanrao.net"]
         pathType: Prefix
       alertmanagerSpec:
-        replicas: 2
+        replicas: 1
         useExistingSecret: true
         configSecret: alertmanager-secret
         storage:
@@ -108,7 +108,7 @@ spec:
         podMetadata:
           annotations:
             secret.reloader.stakater.com/reload: &secret thanos-objstore-config
-        replicas: 2
+        replicas: 1
         replicaExternalLabelName: __replica__
         scrapeInterval: 1m # Must match interval in Grafana Helm chart
         ruleSelectorNilUsesHelmValues: false

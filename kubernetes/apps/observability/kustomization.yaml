@@ -7,3 +7,5 @@ resources:
   - ./kube-prometheus-stack/ks.yaml
   - ./grafana/ks.yaml
   - ./thanos/ks.yaml
+  - ./loki/ks.yaml
+  - ./vector/ks.yaml

@@ -1,5 +1,5 @@
 ---
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: &app csi-driver-smb
@@ -30,6 +30,7 @@ spec:
     name: csi-smb-node
   - apiVersion: v1
     kind: ServiceAccount
+    name: csi-smb-controller-sa
   - apiVersion: v1
     kind: ServiceAccount
     name: csi-smb-node-sa

@@ -30,6 +30,15 @@ spec:
   values:
     controllers:
       jellyfin:
+        affinity:
+          nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+              - matchExpressions:
+                - key: good-qsync
+                  operator: In
+                  values:
+                  - yes
         annotations:
           reloader.stakater.com/auto: "true"
         containers:

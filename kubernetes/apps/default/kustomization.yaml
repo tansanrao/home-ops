@@ -10,3 +10,4 @@ resources:
   - ./smtp-relay/ks.yaml
   - ./authelia/ks.yaml
   - ./miniflux/ks.yaml
+  - ./immich/ks.yaml

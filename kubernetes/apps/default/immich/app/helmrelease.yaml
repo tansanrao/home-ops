@@ -58,7 +58,7 @@ spec:
                 cpu: 100m
                 memory: 250Mi
               limits:
-                memory: 2Gi
+                memory: 8Gi
             securityContext: &securityContext
               fsGroup: 65539
               fsGroupChangePolicy: OnRootMismatch
@@ -81,7 +81,7 @@ spec:
             resources:
               requests: *requests
               limits:
-                memory: 2Gi
+                memory: 8Gi
             securityContext: *securityContext
 
       redis:

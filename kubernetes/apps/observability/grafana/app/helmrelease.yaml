@@ -146,7 +146,6 @@ spec:
             jsonData:
               prometheusType: Thanos
               timeInterval: 1m
-            isDefault: true
           - name: Loki
             type: loki
             uid: loki

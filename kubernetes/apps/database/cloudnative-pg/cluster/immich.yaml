@@ -72,7 +72,7 @@ spec:
   #       s3Credentials: *credentials
     # - name: old-cluster
     #   connectionParameters:
-    #     host: postgres16-rw.default.svc.cluster.local
+    #     host: immich-db-rw.default.svc.cluster.local
     #     user: postgres
     #     dbname: postgres
     #   password:

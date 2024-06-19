@@ -1,0 +1,95 @@
+kind: HelmRelease
+metadata:
+  name: qbittorrent
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.2.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
+  values:
+    controllers:
+      qbittorrent:
+        podSecurityContext:
+          runAsUser: 568
+          runAsGroup: 568
+          fsGroup: 568
+          fsGroupChangePolicy: OnRootMismatch
+          supplementalGroups: [ 10000 ]
+
+        podAnnotations:
+          setGateway: "true"
+        annotations:
+          reloader.stakater.com/auto: 'true'
+        containers:
+          app:
+            env:
+              QBITTORRENT__BT_PORT: 57427
+              QBITTORRENT__PORT: 80
+              TZ: America/New_York
+            image:
+              repository: ghcr.io/onedr0p/qbittorrent
+              tag: 4.5.5
+            probes:
+              liveness:
+                enabled: true
+              readiness:
+                enabled: true
+            resources:
+              limits:
+                memory: 3Gi
+              requests:
+                cpu: 49m
+                memory: 1222Mi
+    ingress:
+      app:
+        annotations:
+          external-dns.alpha.kubernetes.io/target: internal.tansanrao.net
+          nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+        className: internal
+        hosts:
+          - host: "jellyfin.tansanrao.net"
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: http
+
+    persistence:
+      completed-script:
+        defaultMode: 0775
+        globalMounts:
+          - path: /scripts/completed.sh
+            subPath: completed.sh
+        name: qbittorrent-scripts
+        type: configMap
+      config:
+        enabled: true
+        existingClaim: qbittorrent-config-v1
+      media:
+        enabled: true
+        type: nfs
+        server: "192.168.2.2"
+        path: /volume1/Media
+        mountPath: /media
+      add-ons:
+        enabled: true
+        type: emptyDir
+    service:
+      app:
+        controller: qbittorrent
+        ports:
+          http:
+            port: 80

@@ -38,7 +38,7 @@ spec:
           tag: v3.38.0
         envFrom:
           - secretRef:
-              name: vpn-gateway-vpnconfig
+              name: vpn-gateway-secret
         securityContext:
           capabilities:
             add:

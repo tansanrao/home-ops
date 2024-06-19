@@ -25,73 +25,92 @@ spec:
   values:
     controllers:
       qbittorrent:
-        podSecurityContext:
-          runAsUser: 568
-          runAsGroup: 568
-          fsGroup: 568
-          fsGroupChangePolicy: OnRootMismatch
-          supplementalGroups: [ 10000 ]
-
         podAnnotations:
           setGateway: "true"
         annotations:
-          reloader.stakater.com/auto: 'true'
+          reloader.stakater.com/auto: "true"
         containers:
           app:
-            env:
-              QBITTORRENT__BT_PORT: 57427
-              QBITTORRENT__PORT: 80
-              TZ: America/New_York
             image:
               repository: ghcr.io/onedr0p/qbittorrent
-              tag: 4.5.5
+              tag: 4.6.5
+            env:
+              TZ: America/New_York
+              QBITTORRENT__PORT: &port 80
+              QBITTORRENT__BT_PORT: &bittorrentPort 50413
+              QBT_Application__MemoryWorkingSetLimit: 6000
+              QBT_Preferences__WebUI__AlternativeUIEnabled: false
+              QBT_Preferences__WebUI__AuthSubnetWhitelistEnabled: true
+              QBT_Preferences__WebUI__AuthSubnetWhitelist: |-
+                10.69.0.0/16, 192.168.0.0/16
+              QBT_Preferences__WebUI__LocalHostAuth: false
+              QBT_BitTorrent__Session__Interface: eth0
+              QBT_BitTorrent__Session__InterfaceAddress:
+                valueFrom:
+                  fieldRef:
+                    fieldPath: status.podIP
+              QBT_BitTorrent__Session__InterfaceName: eth0
             probes:
-              liveness:
+              liveness: &probes
                 enabled: true
-              readiness:
-                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /api/v2/app/version
+                    port: *port
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities: { drop: ["ALL"] }
             resources:
-              limits:
-                memory: 3Gi
               requests:
-                cpu: 49m
-                memory: 1222Mi
+                cpu: 100m
+              limits:
+                memory: 8Gi
+    defaultPodOptions:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 568
+        runAsGroup: 568
+        fsGroup: 568
+        fsGroupChangePolicy: OnRootMismatch
+        supplementalGroups: [10000]
+        seccompProfile: { type: RuntimeDefault }
+    service:
+      app:
+        controller: qbittorrent
+        type: LoadBalancer
+        annotations:
+          io.cilium/lb-ipam-ips: 192.168.107.24
+        ports:
+          http:
+            port: *port
+          bittorrent:
+            enabled: true
+            port: *bittorrentPort
+            protocol: TCP
     ingress:
       app:
         annotations:
           external-dns.alpha.kubernetes.io/target: internal.tansanrao.net
-          nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
         className: internal
         hosts:
-          - host: "jellyfin.tansanrao.net"
+          - host: qb.tansanrao.net
             paths:
               - path: /
                 service:
                   identifier: app
                   port: http
-
     persistence:
-      completed-script:
-        defaultMode: 0775
-        globalMounts:
-          - path: /scripts/completed.sh
-            subPath: completed.sh
-        name: qbittorrent-scripts
-        type: configMap
       config:
-        enabled: true
-        existingClaim: qbittorrent-config-v1
+        existingClaim: qbittorrent
       media:
         enabled: true
         existingClaim: mediastore-pvc
         globalMounts:
         - path: /mediastore
-      add-ons:
-        enabled: true
-        type: emptyDir
-    service:
-      app:
-        controller: qbittorrent
-        ports:
-          http:
-            port: 80

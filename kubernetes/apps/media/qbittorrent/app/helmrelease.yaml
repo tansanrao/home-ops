@@ -25,10 +25,9 @@ spec:
   values:
     controllers:
       qbittorrent:
-        podAnnotations:
-          setGateway: "true"
         annotations:
           reloader.stakater.com/auto: "true"
+          setGateway: "true"
         containers:
           app:
             image:

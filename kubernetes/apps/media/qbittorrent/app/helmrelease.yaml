@@ -80,6 +80,8 @@ spec:
         fsGroupChangePolicy: OnRootMismatch
         supplementalGroups: [10000]
         seccompProfile: { type: RuntimeDefault }
+      annotations:
+        setGateway: "true"
     service:
       app:
         controller: qbittorrent

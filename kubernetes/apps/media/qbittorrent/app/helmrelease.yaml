@@ -83,10 +83,9 @@ spec:
         existingClaim: qbittorrent-config-v1
       media:
         enabled: true
-        type: nfs
-        server: "192.168.2.2"
-        path: /volume1/Media
-        mountPath: /media
+        existingClaim: mediastore-pvc
+        globalMounts:
+        - path: /mediastore
       add-ons:
         enabled: true
         type: emptyDir

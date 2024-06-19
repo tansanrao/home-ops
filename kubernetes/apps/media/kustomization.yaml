@@ -6,3 +6,4 @@ resources:
   - ./resources/ks.yaml
   - ./jellyfin/ks.yaml
   - ./qbittorrent/ks.yaml
+  - ./sabnzbd/ks.yaml

@@ -18,6 +18,7 @@ resources:
   - ./intel.yaml
   - ./node-feature-discovery.yaml
   - ./angelnu-charts.yaml
+  - ./tailscale-charts.yaml
   - ./external-dns.yaml
   - ./ingress-nginx.yaml
   - ./k8s-gateway.yaml

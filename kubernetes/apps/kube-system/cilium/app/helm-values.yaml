@@ -1,4 +1,6 @@
 ---
+tunnel: "vxlan"
+tunnel-port: "8469"
 autoDirectNodeRoutes: true
 bpf:
   masquerade: false

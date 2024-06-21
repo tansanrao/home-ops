@@ -29,7 +29,7 @@ spec:
         loadBalancerClass: tailscale
       ingressClassResource:
         name: tailscale-nginx
-        default: true
+        default: false
         controllerValue: k8s.io/tailscale-nginx
       admissionWebhooks:
         objectSelector:

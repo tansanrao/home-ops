@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: ingress-nginx-internal
+  name: ingress-nginx-tailscale
   namespace: network
 spec:
   interval: 30m
@@ -22,22 +22,22 @@ spec:
     remediation:
       retries: 3
   values:
-    fullnameOverride: ingress-nginx-internal
+    fullnameOverride: ingress-nginx-tailcale
     controller:
       service:
         annotations:
-          io.cilium/lb-ipam-ips: "192.168.107.10"
+            tailscale.com/expose: "true"
         externalTrafficPolicy: Cluster
       ingressClassResource:
-        name: internal
+        name: tailscale
         default: true
-        controllerValue: k8s.io/internal
+        controllerValue: k8s.io/tailscale
       admissionWebhooks:
         objectSelector:
           matchExpressions:
             - key: ingress-class
               operator: In
-              values: ["internal"]
+              values: ["tailscale"]
       config:
         client-body-buffer-size: 100M
         client-body-timeout: 120

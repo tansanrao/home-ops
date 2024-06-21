@@ -25,9 +25,8 @@ spec:
     fullnameOverride: ingress-nginx-tailscale
     controller:
       service:
-        annotations:
-            tailscale.com/expose: "true"
         externalTrafficPolicy: Cluster
+        loadBalancerClass: tailscale
       ingressClassResource:
         name: tailscale-nginx
         default: true

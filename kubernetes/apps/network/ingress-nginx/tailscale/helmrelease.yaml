@@ -29,15 +29,15 @@ spec:
             tailscale.com/expose: "true"
         externalTrafficPolicy: Cluster
       ingressClassResource:
-        name: tailscale
+        name: tailscale-nginx
         default: true
-        controllerValue: k8s.io/tailscale
+        controllerValue: k8s.io/tailscale-nginx
       admissionWebhooks:
         objectSelector:
           matchExpressions:
             - key: ingress-class
               operator: In
-              values: ["tailscale"]
+              values: ["tailscale-nginx"]
       config:
         client-body-buffer-size: 100M
         client-body-timeout: 120

@@ -112,6 +112,17 @@ spec:
                 service:
                   identifier: app
                   port: http
+      app-ts:
+        annotations:
+          nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+        className: tailscale-nginx
+        hosts:
+          - host: "jellyfin.tansanrao.net"
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: http  
     persistence:
       config:
         enabled: true

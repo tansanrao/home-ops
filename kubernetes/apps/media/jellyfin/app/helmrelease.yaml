@@ -100,6 +100,16 @@ spec:
           http:
             port: 8096
     ingress:
+      tailscale:
+        defaultBackend:
+        service:
+      name: nginx
+      port:
+        number: 80
+  ingressClassName: tailscale
+  tls:
+    - hosts:
+        - nginx
       app:
         annotations:
           external-dns.alpha.kubernetes.io/target: internal.tansanrao.net

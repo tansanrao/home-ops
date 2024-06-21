@@ -5,7 +5,7 @@ kind: Cluster
 metadata:
   name: postgres16
 spec:
-  instances: 1
+  instances: 3
   imageName: ghcr.io/cloudnative-pg/postgresql:16.3-1
   primaryUpdateStrategy: unsupervised
   storage:
@@ -40,7 +40,7 @@ spec:
       wal:
         compression: bzip2
         maxParallel: 8
-      destinationPath: s3://cloudnative-pg/
+      destinationPath: s3://cpng-pg16/
       endpointURL: http://192.168.101.10:9000
       # Note: serverName version needs to be inclemented
       # when recovering from an existing cnpg cluster

@@ -54,7 +54,7 @@ spec:
                     cidr: ::/0 # Allow IPv6 to VPN servers
               ports:
                 # VPN traffic
-                - port: 1194
+                - port: 1197
                   protocol: UDP
                 - port: 53
                   protocol: UDP

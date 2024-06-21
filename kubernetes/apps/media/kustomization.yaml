@@ -9,3 +9,4 @@ resources:
   - ./sabnzbd/ks.yaml
   - ./prowlarr/ks.yaml
   - ./radarr/ks.yaml
+  - ./sonarr/ks.yaml

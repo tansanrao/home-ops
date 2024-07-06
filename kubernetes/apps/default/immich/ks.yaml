@@ -20,5 +20,5 @@ spec:
   wait: false
   postBuild:
     substitute:
-      APP: *app
+      APP: photos
       GATUS_PATH: /

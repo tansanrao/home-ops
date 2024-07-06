@@ -20,3 +20,4 @@ resources:
   - ./piraeus.yaml
   - ./rook-ceph.yaml
   - ./cloudnative-pg.yaml
+  - ./grafana.yaml

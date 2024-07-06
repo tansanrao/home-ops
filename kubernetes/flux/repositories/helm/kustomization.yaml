@@ -23,3 +23,4 @@ resources:
   - ./grafana.yaml
   - ./intel.yaml
   - ./node-feature-discovery.yaml
+  - ./tailscale-charts.yaml

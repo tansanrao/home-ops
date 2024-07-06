@@ -19,3 +19,4 @@ resources:
   - ./backube.yaml
   - ./piraeus.yaml
   - ./rook-ceph.yaml
+  - ./cloudnative-pg.yaml

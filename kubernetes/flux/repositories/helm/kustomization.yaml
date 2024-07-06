@@ -21,3 +21,5 @@ resources:
   - ./rook-ceph.yaml
   - ./cloudnative-pg.yaml
   - ./grafana.yaml
+  - ./intel.yaml
+  - ./node-feature-discovery.yaml

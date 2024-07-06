@@ -81,8 +81,8 @@ spec:
         fsGroup: 568
         fsGroupChangePolicy: OnRootMismatch
         seccompProfile: { type: RuntimeDefault }
-      annotations:
-        setGateway: "true"
+      # annotations:
+      #   setGateway: "true"
     service:
       app:
         controller: prowlarr

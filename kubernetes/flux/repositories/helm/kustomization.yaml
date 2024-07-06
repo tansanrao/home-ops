@@ -16,3 +16,6 @@ resources:
   - ./ingress-nginx.yaml
   - ./k8s-gateway.yaml
   - ./external-secrets.yaml
+  - ./backube.yaml
+  - ./piraeus.yaml
+  - ./rook-ceph.yaml

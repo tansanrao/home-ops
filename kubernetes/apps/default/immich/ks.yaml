@@ -21,5 +21,5 @@ spec:
   postBuild:
     substitute:
       APP: *app
-      GATUS_SUBDOMAIN: qb
+      GATUS_SUBDOMAIN: photos
       GATUS_PATH: /

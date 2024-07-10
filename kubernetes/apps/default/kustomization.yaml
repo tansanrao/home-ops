@@ -9,3 +9,4 @@ resources:
   - ./smtp-relay/ks.yaml
   - ./shared/ks.yaml
   - ./immich/ks.yaml
+  - ./atuin/ks.yaml

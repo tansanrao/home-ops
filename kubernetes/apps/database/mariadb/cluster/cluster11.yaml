@@ -42,7 +42,6 @@ spec:
 
   galera:
     enabled: true
-    podRecoveryTimeout: 15m
 
   service:
     type: LoadBalancer

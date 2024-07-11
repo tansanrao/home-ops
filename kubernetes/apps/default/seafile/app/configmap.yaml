@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: seafile-configmap
+data:
+  TIME_ZONE: "America/New_York"
+  DB_HOST: "mariadb-11-galera-maxscale.database.svc.cluster.local"
+  SEAFILE_SERVER_LETSENCRYPT: "false"
+  SEAFILE_SERVER_HOSTNAME: "files.tansanrao.net"

@@ -10,3 +10,4 @@ resources:
   - ./shared/ks.yaml
   - ./immich/ks.yaml
   - ./atuin/ks.yaml
+  - ./actual/ks.yaml

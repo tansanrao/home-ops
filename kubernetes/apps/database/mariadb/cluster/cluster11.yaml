@@ -1,0 +1,81 @@
+apiVersion: k8s.mariadb.com/v1alpha1
+kind: MariaDB
+metadata:
+  name: mariadb-11-galera
+spec:
+  rootPasswordSecretKeyRef:
+    name: mariadb-secret
+    key: password
+    generate: false
+
+  storage:
+    size: 20Gi
+    storageClassName: ceph-block
+
+  replicas: 2
+  image: "mariadb:11.3.2"
+  imagePullPolicy: IfNotPresent
+
+  maxScale:
+    enabled: true
+
+    auth:
+      adminUsername: root
+      adminPasswordSecretKeyRef:
+        name: mariadb-secret
+        key: maxscale_password
+      deleteDefaultAdmin: true
+
+    kubernetesService:
+      type: LoadBalancer
+      metadata:
+        annotations:
+          io.cilium/lb-ipam-ips: 192.168.107.24
+
+    guiKubernetesService:
+      type: ClusterIP
+
+    connection:
+      secretName: mxs-galera-conn
+      port: 3306
+
+
+  galera:
+    enabled: true
+    podRecoveryTimeout: 15m
+
+  service:
+    type: LoadBalancer
+    metadata:
+      annotations:
+        io.cilium/lb-ipam-ips: 192.168.107.25
+
+  primaryService:
+    type: ClusterIP
+
+  secondaryService:
+    type: ClusterIP
+
+  myCnf: |
+    [mariadb]
+    bind-address=*
+    default_storage_engine=InnoDB
+    binlog_format=row
+    innodb_autoinc_lock_mode=2
+    max_allowed_packet=256M
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 512Mi
+    limits:
+      memory: 2Gi
+
+  podSecurityContext:
+    runAsUser: 999
+    runAsGroup: 999
+    fsGroup: 999
+    fsGroupChangePolicy: OnRootMismatch
+
+  metrics:
+    enabled: true

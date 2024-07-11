@@ -51,7 +51,7 @@ spec:
               limits:
                 memory: 4Gi
 
-      seafile-memcached:
+      memcached:
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
@@ -72,8 +72,8 @@ spec:
         ports:
           http:
             port: 80
-      seafile-memcached:
-        controller: seafile-memcached
+      memcached:
+        controller: memcached
         ports:
           http:
             port: 11211

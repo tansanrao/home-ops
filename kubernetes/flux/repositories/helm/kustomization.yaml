@@ -25,4 +25,3 @@ resources:
   - ./node-feature-discovery.yaml
   - ./tailscale-charts.yaml
   - ./angelnu-charts.yaml
-  - ./mariadb-operator.yaml

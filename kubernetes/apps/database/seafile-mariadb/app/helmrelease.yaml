@@ -1,0 +1,89 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: seafile-mariadb
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.2.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
+  dependsOn:
+    - name: rook-ceph-cluster
+      namespace: rook-ceph
+  values:
+    controllers:
+      mariadb:
+        containers:
+          app:
+            image:
+              repository: mariadb
+              tag: 10.11.8
+            env:
+              MARIADB_AUTO_UPGRADE: "true"
+            envFrom:
+              - secretRef:
+                  name: seafile-mariadb-secret
+            probes:
+              liveness:
+                enabled: true
+                custom: true
+                spec:
+                  exec:
+                    command:
+                      - /bin/bash
+                      - /scripts/check.sh
+                  failureThreshold: 3
+                  initialDelaySeconds: 120
+                  periodSeconds: 10
+                  successThreshold: 1
+                  timeoutSeconds: 1
+              readiness:
+                enabled: true
+                custom: true
+                spec:
+                  exec:
+                    command:
+                      - /bin/bash
+                      - /scripts/check.sh
+                  failureThreshold: 3
+                  initialDelaySeconds: 30
+                  periodSeconds: 10
+                  successThreshold: 1
+                  timeoutSeconds: 1
+            resources:
+              requests:
+                cpu: 50m
+                memory: 256Mi
+              limits:
+                memory: 512Mi
+    service:
+      app:
+        controller: mariadb
+        ports:
+          mysql:
+            port: 3306
+            primary: true
+    persistence:
+      data:
+        enabled: true
+        existingClaim: seafile-mariadb
+        globalMounts:
+          - path: /var/lib/mysql
+      scripts:
+        type: configMap
+        name: mariadb-check

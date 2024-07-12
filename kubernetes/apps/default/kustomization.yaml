@@ -12,3 +12,4 @@ resources:
   - ./atuin/ks.yaml
   - ./actual/ks.yaml
   - ./ocis/ks.yaml
+  - ./paperless/ks.yaml

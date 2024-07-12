@@ -5,6 +5,6 @@ metadata:
   name: seafile-configmap
 data:
   TIME_ZONE: "America/New_York"
-  DB_HOST: "mariadb-11-galera.database.svc.cluster.local"
+  DB_HOST: "seafile-mariadb.database.svc.cluster.local"
   SEAFILE_SERVER_LETSENCRYPT: "false"
   SEAFILE_SERVER_HOSTNAME: "files.tansanrao.net"

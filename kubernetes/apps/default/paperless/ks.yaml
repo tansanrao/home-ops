@@ -7,6 +7,8 @@ metadata:
 spec:
   targetNamespace: default
   dependsOn:
+    - name: cloudnative-pg-cluster
+    - name: volsync
     - name: csi-driver-smb
     - name: external-secrets-stores
   path: ./kubernetes/apps/default/paperless/app

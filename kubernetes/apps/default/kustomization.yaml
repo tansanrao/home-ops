@@ -11,4 +11,3 @@ resources:
   - ./immich/ks.yaml
   - ./atuin/ks.yaml
   - ./actual/ks.yaml
-  - ./seafile/ks.yaml

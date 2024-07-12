@@ -58,7 +58,7 @@ spec:
                 cpu: 100m
                 memory: 250Mi
               limits:
-                memory: 8Gi
+                memory: 4Gi
             securityContext: &securityContext
               fsGroup: 65539
               fsGroupChangePolicy: OnRootMismatch

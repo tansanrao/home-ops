@@ -13,3 +13,4 @@ resources:
   - ./actual/ks.yaml
   - ./ocis/ks.yaml
   - ./paperless/ks.yaml
+  - ./freshrss/ks.yaml

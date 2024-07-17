@@ -1,0 +1,9 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: mysql-charts
+spec:
+  interval: 45m
+  url: https://mysql.github.io/mysql-operator/
+  timeout: 3m

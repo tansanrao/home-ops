@@ -38,3 +38,4 @@ spec:
 
     envs:
       imagesPullPolicy: IfNotPresent
+      k8sClusterDomain: "cluster.local"

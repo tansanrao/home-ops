@@ -44,7 +44,7 @@ spec:
             env:
               ATUIN_HOST: 0.0.0.0
               ATUIN_PORT: &port 80
-              ATUIN_OPEN_REGISTRATION: "true"
+              ATUIN_OPEN_REGISTRATION: "false"
               ATUIN_METRICS__ENABLE: "true"
               ATUIN_METRICS__HOST: 0.0.0.0
               ATUIN_METRICS__PORT: &metricsPort 8080
@@ -100,8 +100,8 @@ spec:
     ingress:
       app:
         annotations:
-          external-dns.alpha.kubernetes.io/target: internal.tansanrao.net
-        className: internal
+          external-dns.alpha.kubernetes.io/target: external.tansanrao.net
+        className: external
         hosts:
           - host: sh.tansanrao.net
             paths:

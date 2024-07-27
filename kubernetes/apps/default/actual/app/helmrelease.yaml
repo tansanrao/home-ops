@@ -84,6 +84,16 @@ spec:
                   identifier: app
                   port: http
 
+      app-ts:
+        className: "tailscale"
+        hosts:
+          - host: actual
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: http
+
     persistence:
       data:
         existingClaim: actual

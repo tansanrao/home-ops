@@ -77,6 +77,13 @@ spec:
                 service:
                   identifier: app
                   port: http
+          - host: tansanrao.com
+            paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  identifier: app
+                  port: http
         tls:
           - hosts:
               - *host

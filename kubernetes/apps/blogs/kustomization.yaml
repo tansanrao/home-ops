@@ -7,3 +7,4 @@ resources:
   - ./namespace.yaml
   # Flux-Kustomizations
   - ./asif-personal/ks.yaml
+  - ./tanuj-blog/ks.yaml

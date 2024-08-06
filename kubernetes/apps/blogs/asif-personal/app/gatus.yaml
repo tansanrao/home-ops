@@ -10,7 +10,7 @@ data:
     endpoints:
       - name: "Asif's Website"
         group: external
-        url: "https://asifiqbal.xyz/
+        url: "https://asifiqbal.xyz/"
         interval: 1m
         client:
           dns-resolver: tcp://1.1.1.1:53

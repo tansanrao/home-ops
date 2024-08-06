@@ -10,7 +10,7 @@ data:
     endpoints:
       - name: "Tansanrao's Blog"
         group: external
-        url: "https://tansanrao.com/
+        url: "https://tansanrao.com/"
         interval: 1m
         client:
           dns-resolver: tcp://1.1.1.1:53

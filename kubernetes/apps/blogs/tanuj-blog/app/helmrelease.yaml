@@ -64,16 +64,15 @@ spec:
             port: 2368
 
     ingress:
-      main:
-        enabled: true
-        className: external
+      app:
         annotations:
-          external-dns.alpha.kubernetes.io/target: external.tansanrao.net
+          nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+          nginx.ingress.kubernetes.io/ssl-redirect: "false"
+        className: tailscale-nginx
         hosts:
-          - host: tansanrao.com
+          - host: "tansanrao.com"
             paths:
               - path: /
-                pathType: Prefix
                 service:
                   identifier: app
                   port: http

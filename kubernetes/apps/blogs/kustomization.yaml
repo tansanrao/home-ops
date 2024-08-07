@@ -8,3 +8,4 @@ resources:
   # Flux-Kustomizations
   - ./asif-personal/ks.yaml
   - ./tanuj-blog/ks.yaml
+  - ./pmpl-website/ks.yaml

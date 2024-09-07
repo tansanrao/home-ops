@@ -32,7 +32,7 @@ spec:
           app:
             image:
               repository: ghost
-              tag: 5.93.0
+              tag: 5.94.0
             envFrom: &envFrom
               - secretRef:
                   name: pmpl-website-secret

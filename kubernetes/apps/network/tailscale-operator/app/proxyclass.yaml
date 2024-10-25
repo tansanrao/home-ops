@@ -12,7 +12,6 @@ spec:
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
-            drop:
-              - ALL
             add:
               - NET_ADMIN
+              - NET_RAW

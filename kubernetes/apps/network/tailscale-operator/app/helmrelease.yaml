@@ -29,6 +29,6 @@ spec:
     proxyConfig:
       image:
         repository: ghcr.io/tailscale/tailscale
-        defaultProxyClass: "tun-access"
+      defaultProxyClass: "tun-access"
     apiServerProxyConfig:
       mode: "false"

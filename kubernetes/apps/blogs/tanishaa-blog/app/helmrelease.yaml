@@ -32,7 +32,7 @@ spec:
           app:
             image:
               repository: ghost
-              tag: 5.98.1
+              tag: 5.100.1
             envFrom: &envFrom
               - secretRef:
                   name: tanishaa-blog-secret

@@ -14,3 +14,4 @@ resources:
   - ./ocis/ks.yaml
   - ./paperless/ks.yaml
   - ./freshrss/ks.yaml
+  - ./mealie/ks.yaml

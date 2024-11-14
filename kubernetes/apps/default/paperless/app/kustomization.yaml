@@ -7,5 +7,5 @@ resources:
   - ./configmap.yaml
   - ./helmrelease.yaml
   - ./pvc.yaml
-  - ../../../../templates/gatus/guarded
+  - ../../../../templates/gatus/external
   - ../../../../templates/volsync

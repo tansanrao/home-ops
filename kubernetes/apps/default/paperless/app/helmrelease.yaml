@@ -85,21 +85,11 @@ spec:
 
     ingress:
       app:
-        className: internal
+        className: external
         annotations:
-          external-dns.alpha.kubernetes.io/target: internal.tansanrao.net
+          external-dns.alpha.kubernetes.io/target: external.tansanrao.net
         hosts:
           - host: paperless.tansanrao.net
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
-
-      app-ts:
-        className: "tailscale"
-        hosts:
-          - host: paperless
             paths:
               - path: /
                 service:

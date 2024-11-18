@@ -71,23 +71,13 @@ spec:
 
     ingress:
       app:
-        className: "internal"
+        className: "external"
         annotations:
-          external-dns.alpha.kubernetes.io/target: internal.tansanrao.net
+          external-dns.alpha.kubernetes.io/target: external.tansanrao.net
           nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
           nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
         hosts:
           - host: actual.tansanrao.net
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
-
-      app-ts:
-        className: "tailscale"
-        hosts:
-          - host: actual
             paths:
               - path: /
                 service:

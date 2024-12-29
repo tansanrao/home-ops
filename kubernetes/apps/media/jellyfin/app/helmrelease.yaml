@@ -73,15 +73,15 @@ spec:
                 gpu.intel.com/i915: 1
                 memory: 8Gi
     defaultPodOptions:
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: good-qsync
-                operator: In
-                values:
-                - yes
+      # affinity:
+      #   nodeAffinity:
+      #     requiredDuringSchedulingIgnoredDuringExecution:
+      #       nodeSelectorTerms:
+      #       - matchExpressions:
+      #         - key: good-qsync
+      #           operator: In
+      #           values:
+      #           - yes
       securityContext:
         runAsNonRoot: true
         runAsUser: 568

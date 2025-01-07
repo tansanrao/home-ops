@@ -41,7 +41,7 @@ spec:
       endpointURL: http://192.168.101.10:9000
       # Note: serverName version needs to be inclemented
       # when recovering from an existing cnpg cluster
-      serverName: &currentCluster immich-v3
+      serverName: &currentCluster immich-v4
       s3Credentials:
         accessKeyId:
           name: cloudnative-pg-secret
@@ -52,13 +52,12 @@ spec:
 
   # Note: previousCluster needs to be set to the name of the previous
   # cluster when recovering from an existing cnpg cluster
-  # bootstrap:
-  #   recovery:
-  #     source: &previousCluster immich-v2
-  # Note: externalClusters is needed when recovering from an existing cnpg cluster
-  # externalClusters:
-  #   - name: *previousCluster
-  #     barmanObjectStore:
-  #       <<: *barmanObjectStore
-  #       serverName: *previousCluster
-
+  bootstrap:
+    recovery:
+      source: &previousCluster immich-v3
+  Note: externalClusters is needed when recovering from an existing cnpg cluster
+  externalClusters:
+    - name: *previousCluster
+      barmanObjectStore:
+        <<: *barmanObjectStore
+        serverName: *previousCluster

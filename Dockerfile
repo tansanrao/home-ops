@@ -1,7 +1,7 @@
 FROM ubuntu:24.04
 
 # Install prerequisites
-RUN apt-get update && apt-get install -y gpg wget curl \
+RUN apt-get update && apt-get install -y gpg wget curl git \
   && install -dm 755 /etc/apt/keyrings \
   && wget -qO - https://mise.jdx.dev/gpg-key.pub | gpg --dearmor | tee /etc/apt/keyrings/mise-archive-keyring.gpg 1> /dev/null \
   && echo "deb [signed-by=/etc/apt/keyrings/mise-archive-keyring.gpg arch=arm64] https://mise.jdx.dev/deb stable main" | tee /etc/apt/sources.list.d/mise.list \

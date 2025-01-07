@@ -69,10 +69,10 @@ spec:
         nodes:
           - name: "k8s0"
             devices:
-              - name: "sdb"
+              - name: "sda"
           - name: "k8s1"
             devices:
-              - name: "sdc"
+              - name: "sdb"
           - name: "k8s2"
             devices:
               - name: "nvme0n1"

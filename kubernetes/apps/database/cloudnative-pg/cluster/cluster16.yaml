@@ -38,7 +38,7 @@ spec:
         maxParallel: 8
       destinationPath: s3://cnpg-pg16/
       endpointURL: http://192.168.101.10:9000
-      # Note: serverName version needs to be inclemented
+      # Note: serverName version needs to be incremented
       # when recovering from an existing cnpg cluster
       serverName: &currentCluster postgres16-v3
       s3Credentials:

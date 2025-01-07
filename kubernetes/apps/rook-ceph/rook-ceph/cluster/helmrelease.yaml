@@ -68,13 +68,13 @@ spec:
         useAllDevices: false
         nodes:
           - name: "k8s0"
-            devices: 
-              - name: 'sda'
-          - name: "k8s1"
             devices:
               - name: "sdb"
+          - name: "k8s1"
+            devices:
+              - name: "sdc"
           - name: "k8s2"
-            devices: 
+            devices:
               - name: "nvme0n1"
         config:
           osdsPerDevice: "1"
